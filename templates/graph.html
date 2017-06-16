@@ -34,8 +34,8 @@ s = new sigma({
         }
 });
 s.graph.nodes().forEach(function(node, i, a) {
-  node.x = Math.cos(Math.PI * 2 * i / a.length);
-  node.y = Math.sin(Math.PI * 2 * i / a.length);
+  node.x = Math.cos(Math.PI * 2 * i / a.length)*2;
+  node.y = Math.sin(Math.PI * 2 * i / a.length)*2;
 });
 
 s.startForceAtlas2();
@@ -52,7 +52,7 @@ sleeper();
 
 </script>
   <div>
-  <a class="col-md-offset-3 col-md-6 text-center"style="position:absolute;bottom:0;" href="/">
+  <a class="col-md-offset-3 col-md-6 text-center"style="position:absolute;bottom:0;" href="/network-graph">
     <span class="input-group-btn glyphicon glyphicon-search">
       <button type="submit" id="submit" class="btn btn-success">
         <span class="glyphicon glyphicon-search">Back!</span>
@@ -60,6 +60,9 @@ sleeper();
     </span>
   </a>
   </div>
+<p style="position: absolute; top: 70%;left:100px;">
+	Blue: submission<br>Green: comments to submission<br>Light blue: comments to comments
+</p>
 <script src="{{url_for('static', filename='js/jquery.min.js')}}" type="text/javascript"></script>
 <script src="{{url_for('static', filename='js/bootstrap.min.js')}}" type="text/javascript"></script>
 <script src="{{url_for('static', filename='js/material.min.js')}}"></script>

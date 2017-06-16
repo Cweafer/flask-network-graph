@@ -1,3 +1,4 @@
+<div style="height:85px; width: 100%; background: white;"></div>
 {% if errors %}
 <div class="alert alert-danger">
   <strong></strong> {{errors[0]}}.
@@ -20,31 +21,33 @@
 <link href="{{url_for('static', filename='css/material-kit.css')}}" rel="stylesheet"/>
 <link href="{{url_for('static', filename='css/demo.css')}}" rel="stylesheet"/>
 
-<body>
-  <div class="main" style="">
-  	<div class="container">
-  		<div class="row">
-        <h1 style="text-align:center;"></h1>
-  			<br><br>
-  			<div class="col-md-6 col-md-offset-3">
-          <form class="input-group" method="POST">
-            {{form.csrf_token}}
-            <p>
-              Enter the submission ID (eg. 4caow0) or URL : {{form.submission_id(class="form-control")}}
-            </p>
-            <span class="input-group-btn glyphicon glyphicon-search">
-              <button type="submit" id="submit" class="btn btn-primary">
-                <span class="glyphicon glyphicon-search">Get network graph!</span>
-              </button>
-            </span>
-            <hr class="styled">
-          </form>
 
-        </div>
-      </div>
+<div class="main" style="">
+	<div class="container">
+		<div class="row">
+      <h1 style="text-align:center;"></h1>
+			<br><br>
+			<div class="col-md-6 col-md-offset-3">
+        <br><br><br>
+        <form class="input-group" method="POST">
+          {{form.csrf_token}}
+          <p>
+            Enter a Reddit submission ID (eg. 4caow0) or URL : {{form.submission_id(class="form-control")}}
+          </p>
+          <span class="input-group-btn glyphicon glyphicon-search">
+            <button type="submit" id="submit" class="btn btn-primary">
+              <span class="glyphicon glyphicon-search">See network graph!</span>
+            </button>
+          </span>
+          <hr class="styled">
+        </form>
+        <br><br><br><br><br>
+  <br><br><br><br>
+    </div>
     </div>
   </div>
-</body>
+</div>
+
 
 
 <script src="{{url_for('static', filename='js/jquery.min.js')}}" type="text/javascript"></script>
