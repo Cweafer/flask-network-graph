@@ -1,20 +1,22 @@
 import praw
 from flask import Flask, render_template, request
 from forms import SearchForm
+from praw.models import MoreComments
 
 app = Flask(__name__)
 
 #Enter your Reddit appliation's credentials below.
-CLIENT_ID = ''
-CLIENT_SECRET = ''
+SERVER_IP = ""
+CLIENT_ID = '' #local
+CLIENT_SECRET = '' #local
 REDIRECT_URI = ''
-USER_AGENT = ''
+USER_AGENT=''
 reddit = praw.Reddit(client_id=CLIENT_ID,client_secret=CLIENT_SECRET,redirect_uri=REDIRECT_URI,user_agent=USER_AGENT)
 
 @app.route('/', methods=['GET', 'POST'])
 def main():
     errors = []
-    form = SearchForm2(request.form)
+    form = SearchForm(request.form)
     if request.method == "POST" and form.validate():
         submission = None
         if form.data['submission_id'].startswith("www") or form.data['submission_id'].startswith("http"):
@@ -86,13 +88,13 @@ def main():
             json_data = {"nodes": nodes, "edges": edges}
 
         except Exception as ex:
-            #print(ex)
+            print(ex)
             errors.append("Please enter a valid URL or submission ID!")
-            return render_template('graph_start.html', form=form,errors=errors)
+            return render_template('index.html', form=form,errors=errors)
 
 
         return render_template('graph.html', form=form, json_data=json_data)
-    return render_template('graph_start.html', form=form,errors=errors)
+    return render_template('index.html', form=form,errors=errors)
 
 if __name__ == '__main__':
   app.run(debug= True,host="127.0.0.1",port=5000, threaded=True)
